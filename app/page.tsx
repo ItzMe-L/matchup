@@ -1,24 +1,18 @@
-import {fetchTournaments} from "@/server/queries/queries";
+import Link from 'next/link';
 
-export default async function Home() {
-    const tournaments = await fetchTournaments();
-
-    const tournamentElements = tournaments != null ? tournaments.map((tournament) => {
-        return <li key={tournament.id}>
-            <h2>{tournament.name}</h2>
-            <p>{tournament.description}</p>
-        </li>
-    }) : <></>
-
+export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <div>
-            <ul>
-                {tournamentElements}
-            </ul>
-        </div>
-      </main>
-    </div>
+    <main className="bg-white">
+      <div className="flex flex-col justify-center items-center h-screen">
+        <h1 className="text-black">Matchup</h1>
+        <Link href="/features/account_creation/login" className="text-blue-600 hover:underline">
+          Go to Login
+        </Link>
+        <Link href="/features/account_creation/signup" className="text-blue-600 hover:underline">
+          Go to Signup
+        </Link>
+      </div>
+    </main>
+    
   );
 }
